@@ -100,6 +100,10 @@ vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 "Reload tags file
 nmap <Leader>rt :! ctags -R --exclude="vendor" --exclude="node_modules" --exclude=".git"
+
+"Make it easier to copy to systems clipboard"
+noremap <Leader>y "+y
+
 "-------------Plugins----------------------"
 "
 "/ CtrlP
