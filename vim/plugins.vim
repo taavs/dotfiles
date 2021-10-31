@@ -11,7 +11,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-startify'
 
 " Syntax
-Plug 'neoclide/coc.nvim'
 Plug 'vim-syntastic/syntastic'
 Plug 'jwalton512/vim-blade'
 Plug 'tpope/vim-sleuth'
@@ -23,6 +22,8 @@ Plug 'preservim/tagbar'
 Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-vinegar'
 Plug 'preservim/nerdtree'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Version Control
 Plug 'tpope/vim-fugitive'
