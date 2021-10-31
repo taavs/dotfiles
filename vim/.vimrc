@@ -1,4 +1,4 @@
-  set nocompatible              					         " be iMproved, required
+set nocompatible              					         " be iMproved, required
 
 so ~/.vim/plugins.vim
 
@@ -27,7 +27,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 "-------------Visuals-----------------------"
 set background=dark
 
-colorscheme night-owl
+colorscheme gruvbox
 
 set guioptions-=l                                                       "Disable Gui scrollbars.
 set guioptions-=L 
@@ -55,8 +55,13 @@ nmap <C-L> <C-W><C-L>
 
 "-------------Mappings----------------------"
 "GIT MAPPINGS
+
 "Open status
-nmap <Leader>gs :Gstatus<cr>
+nmap <Leader>gs :Git<cr>
+
+"Open Git log
+nmap <Leader>gl :Gclog<cr>
+
 "Make it easy to edit the Vimrc file.
 nmap <Leader>ev :tabedit ~/.vimrc<cr>
 
@@ -77,8 +82,8 @@ nmap <Leader>l :set list!<cr>
 nmap <c-R> :CtrlPBufTag<cr>
 nmap <D-e> :CtrlPMRUFiles<cr>
 
-"Ctags helper
-nmap <Leader>f :tag<space>
+"Search for a file 
+nnoremap <Leader>f :Ag<cr>
 
 "Set jj to esc"
 inoremap jj <Esc>
@@ -105,6 +110,9 @@ nmap <Leader>rt :! ctags -R --exclude="vendor" --exclude="node_modules" --exclud
 noremap <Leader>y "+y
 
 "-------------Plugins----------------------"
+"
+"Makes FZF ignore filenames when searching for something
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 "
 "/ CtrlP
 let g:ctrlp_show_hidden = 1                                               "Display dotfiles
@@ -158,8 +166,10 @@ autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
 let g:rainbow_active=1
 
 "Vim fugitive
-"Set diff to vertical
-set diffopt+=vertical
+if &diff
+    set diffopt-=internal
+    set diffopt+=vertical
+endif
 
 "COC Vim
 "Use K to show documentation in preview window.
